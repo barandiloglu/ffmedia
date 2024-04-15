@@ -3,6 +3,10 @@ import '../css/HomePage.css'
 
 import LogoBlackWhite from '../resources/Logo-BlackWhite.png'
 
+import Photo from '../resources/photos/IMG_4146.jpg'
+import Photo2 from '../resources/photos/IMG_4182.jpg'
+import Photo3 from '../resources/photos/IMG_4011.jpg'
+
 function HomePage() {
     const [textIndex, setTextIndex] = useState(0);
     const [isRotated, setIsRotated] = useState(false);
@@ -16,8 +20,8 @@ function HomePage() {
           setTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
           setTimeout(() => {
             setIsRotated(false);
-          }, 1000);
-        }, 2000); 
+          }, 5000);
+        }, 10000); 
     
         return () => clearInterval(interval);
     }, []);
@@ -50,29 +54,46 @@ function HomePage() {
 
         <div className='flex w-full mt-10 bg-secondary'>
             <div className='flex flex-row w-full'>
-                <img
-                    className={`2xl:w-[30%] xl:w-[30%] lg:w-[30%] md:w-[30%] sm:w-[25%] min-[320px]:w-[20%] object-cover z-10`}
-                    src={LogoBlackWhite}
-                    alt='Logo-BlackWhite'
+                <div className='2xl:w-[30%] xl:w-[20%] xl:ml-[-11%] lg:w-[20%] lg:ml-[-11%] md:w-[30%] md:ml-[-16%] sm:w-[25%] sm:ml-[-13%] min-[320px]:w-[35%] min-[320px]:ml-[-17%] flex' 
                     style={{
-                        marginLeft: '-15%',
-                        transform: `rotate(${rotationDegrees}deg)`,
-                        transition: isRotated ? 'transform 0.5s ease' : 'none',
                     }}
-                />
+                >
+                    <img
+                        className={` object-contain z-10`}
+                        src={LogoBlackWhite}
+                        alt='Logo-BlackWhite'
+                        style={{
+                            transform: `rotate(${rotationDegrees}deg)`,
+                            transition: isRotated ? 'transform 0.5s ease' : 'none',
+                        }}
+                    />
+                </div>
 
-                <div className='flex w-full flex-col justify-between bg-transparent'>
-                    <h1 className={`mt-4 xl:text-2xl sm:text-xl min-[320px]:text-md text-third font-lemon-milk ${isRotated ? 'animate-slide-up-1' : ''}`}>
+                <div className='flex flex-col justify-between w-full ml-4 bg-transparent'>
+                    <h1 className={`mt-2 xl:text-2xl lg:text-xl md:text-lg sm:text-lg min-[320px]:text-[11px] text-third font-lemon-milk ${isRotated ? 'animate-slide-up-1' : ''}`}>
                         {texts[textIndex].title}
                     </h1>
 
-                    <p className='xl:text-xl sm:text-md min-[320px]:text-xs text-justify mr-[10%] xl:mt-2 sm:mt-4 text-third font-alata'>
+                    <p className={`xl:text-xl lg:text-lg md:text-md sm:text-xs min-[320px]:text-[10px] text-justify mr-[10%] xl:mt-2 text-third font-alata ${isRotated ? 'animate-slide-up-1' : ''}`}>
                         {texts[textIndex].content}
                     </p>
 
-                    <p className='mt-4 mb-4 underline xl:text-xl sm:text-md min-[320px]:text-xs text-third font-alata'>
+                    <p className={`mt-2 mb-2 underline xl:text-xl sm:text-xs min-[320px]:text-[9px] text-third font-alata ${isRotated ? 'animate-slide-up-1' : ''}`}>
                         {texts[textIndex].button}
                     </p>
+                </div>
+            </div>
+        </div>
+
+        <div className='flex w-full mt-20 border border-red-500'>
+            <div className='flex flex-row justify-center w-full mx-20 border border-yellow-300'>
+                <div className='flex w-[35%] border justify-center border-green-500'>
+                    <img src={Photo} className='object-cover'></img>
+                </div>
+
+                <div className='flex flex-col justify-between w-[55%] h-96 ml-10 border border-blue-400'>
+                    <img src={Photo2} className='object-cover mb-2 h-1/2'></img>
+                    <img src={Photo3} className='object-cover h-1/2'></img>
                 </div>
             </div>
         </div>

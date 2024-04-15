@@ -28,11 +28,10 @@ function Navbar() {
     }, []);
 
     return (
-        <div className='flex flex-col w-full bg-primary items-center'>
-            <div className='flex flex-row items-center justify-between text-third font-alata'>
-                
+        <div className='flex flex-col items-center w-full bg-primary'>
+            <div className='flex flex-row items-center justify-between w-full text-third font-alata'>
                 {showButtons && (
-                    <div className='flex flex-row items-center ml-8 space-x-2'>
+                    <div className='flex flex-row items-center w-full ml-8 space-x-2'>
                         <p className='flex ml-4 text-third font-alata animate-slide-up-1'>frameandflowdesign@gmail.com</p>
 
                         <p className='flex font-alata text-third animate-slide-up-and-rotate'>
@@ -52,14 +51,14 @@ function Navbar() {
                 )}
 
 
-                <div className='flex items-center 2xl:mr-12 sm:mr-0'>
+                <div className='flex items-center justify-center w-full'>
                     <button className='w-32 h-32 animate-spin'>
                         <img src={gif} ></img>
                     </button>
                 </div>
 
                 {showButtons && (
-                    <div className='flex flex-row items-center mr-8 space-x-8'>
+                    <div className='flex flex-row items-center w-full mr-8 space-x-8'>
                         <button className='animate-slide-up-1'>
                             PROJECTS
                         </button>
