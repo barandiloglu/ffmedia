@@ -20,8 +20,8 @@ function HomePage() {
           setTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
           setTimeout(() => {
             setIsRotated(false);
-          }, 5000);
-        }, 10000); 
+          }, 1000);
+        }, 2000); 
     
         return () => clearInterval(interval);
     }, []);
@@ -33,10 +33,15 @@ function HomePage() {
             button: 'Let FrameFlow be the architect of your digital presence.'
         },
         {
-            title: 'Test',
-            content: 'FrameFlow doesn\'t just build brands, we cultivate captivating experiences. Through strategic content creation, flawless web design, and meticulous social media management, we elevate your brand identity and propel it toward unparalleled success.',
+            title: 'QUALITY OVER SPEED, EVERY TIME.',
+            content: 'Quality over speed, every time. We won\'t rush through a project just to meet a deadline. We\'re all about taking the time to understand your brand, who you\'re trying to reach, and what you want to achieve online.',
             button: 'Let FrameFlow be the architect of your digital presence.'
         },
+        {
+            title: 'THE BOUTIQUE APPROACH.',
+            content: 'Unlike large agencies, we offer personalized attention and a deep dive into your brand\'s unique story. We believe in quality over quantity, ensuring your campaigns resonate with your target audience.',
+            button: 'Let FrameFlow be the architect of your digital presence.'
+        }
     ];
     
     
@@ -54,12 +59,12 @@ function HomePage() {
 
         <div className='flex w-full mt-10 bg-secondary'>
             <div className='flex flex-row w-full'>
-                <div className='2xl:w-[30%] xl:w-[20%] xl:ml-[-11%] lg:w-[20%] lg:ml-[-11%] md:w-[30%] md:ml-[-16%] sm:w-[25%] sm:ml-[-13%] min-[320px]:w-[35%] min-[320px]:ml-[-17%] flex' 
+                <div className='2xl:w-[15%] 2xl:ml-[-8.2%] xl:w-[20%] xl:ml-[-11%] lg:w-[20%] lg:ml-[-11%] md:w-[30%] md:ml-[-16%] sm:w-[25%] sm:ml-[-13%] min-[320px]:w-[35%] min-[320px]:ml-[-17%] flex' 
                     style={{
                     }}
                 >
                     <img
-                        className={` object-contain z-10`}
+                        className={`object-contain`}
                         src={LogoBlackWhite}
                         alt='Logo-BlackWhite'
                         style={{
@@ -70,15 +75,15 @@ function HomePage() {
                 </div>
 
                 <div className='flex flex-col justify-between w-full ml-4 bg-transparent'>
-                    <h1 className={`mt-2 xl:text-2xl lg:text-xl md:text-lg sm:text-lg min-[320px]:text-[11px] text-third font-lemon-milk ${isRotated ? 'animate-slide-up-1' : ''}`}>
+                    <h1 className={`mt-2 2xl:text-4xl xl:text-2xl lg:text-xl md:text-lg sm:text-lg min-[320px]:text-[11px] text-third font-lemon-milk ${isRotated ? 'animate-slide-up-1' : ''}`}>
                         {texts[textIndex].title}
                     </h1>
 
-                    <p className={`xl:text-xl lg:text-lg md:text-md sm:text-xs min-[320px]:text-[10px] text-justify mr-[10%] xl:mt-2 text-third font-alata ${isRotated ? 'animate-slide-up-1' : ''}`}>
+                    <p className={`2xl:text-3xl xl:text-xl lg:text-lg md:text-md sm:text-xs min-[320px]:text-[10px] text-justify mr-[10%] xl:mt-2 text-third font-alata ${isRotated ? 'animate-slide-up-1' : ''}`}>
                         {texts[textIndex].content}
                     </p>
 
-                    <p className={`mt-2 mb-2 underline xl:text-xl sm:text-xs min-[320px]:text-[9px] text-third font-alata ${isRotated ? 'animate-slide-up-1' : ''}`}>
+                    <p className={`mt-2 mb-2 underline 2xl:text-3xl xl:text-xl sm:text-xs min-[320px]:text-[9px] text-third font-alata ${isRotated ? 'animate-slide-up-1' : ''}`}>
                         {texts[textIndex].button}
                     </p>
                 </div>
