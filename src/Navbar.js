@@ -13,6 +13,9 @@ import LinkedIn from './resources/linkedin.png'
 function Navbar() {
     const [showButtons, setShowButtons] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
+    const [animate, setAnimate] = useState(false);
+    const [animate2, setAnimate2] = useState(false);
+    const [animate3, setAnimate3] = useState(false);
 
     useEffect(() => {
       const handleResize = () => {
@@ -32,6 +35,29 @@ function Navbar() {
     const toggleActive = () => {
         const ham = document.querySelector('.ham');
         ham.classList.toggle('active');
+    };
+
+    const toggleMobileBar = () => {
+        if (isOpen) {
+            setIsOpen(false);
+            setAnimate(false); 
+            setAnimate2(false); 
+            setAnimate3(false); 
+        } else {
+            setIsOpen(true); 
+            setTimeout(() => {
+                setAnimate(true); 
+
+                setTimeout(() => {
+                    setAnimate2(true); 
+
+                    setTimeout(() => {
+                        setAnimate3(true);  
+                    }, 500);
+
+                }, 500)
+            }, 500);
+        }
     };
 
 
@@ -59,7 +85,7 @@ function Navbar() {
                 )}
 
                 {!showButtons && (
-                    <div className='flex flex-row items-center space-x-2 ml-2 w-full'>
+                    <div className='flex flex-row items-center w-full ml-2 space-x-2'>
                         <button className='animate-slide-up-1'>
                             <img className='w-8 h-8 min-w-8 min-h-8' src={Instagram} alt='instagram'></img>
                         </button>
@@ -72,18 +98,15 @@ function Navbar() {
                     </div>
                 )}
 
-                <div className='flex items-center justify-center w-full'>
+                <div className={`flex items-center justify-center w-full ${isOpen ? 'z-50' : 'z-50'}`}>
                     <button className='w-32 h-32 animate-spin'>
-                        <img src={gif} ></img>
+                        <img src={gif}></img>
                     </button>
                 </div>
 
                 {!showButtons && (
-                    <div className='flex flex-row items-center justify-end space-x-2 mr-2 w-full'>
-                        <button className='px-2 bg-secondary animate-slide-up-1'>
-                            CONTACT US
-                        </button>
-                        <button className='px-2 animate-slide-up-2 z-50' onClick={() => setIsOpen(!isOpen)}>
+                    <div className='flex flex-row items-center justify-end w-full mr-2 space-x-2'>
+                        <button className='z-50 px-2 animate-slide-up-2' onClick={toggleMobileBar}>
                             <svg class="ham ham3" viewBox="0 0 100 100" width="80" onClick={toggleActive}>
                                 <path
                                     class="line top"
@@ -102,46 +125,32 @@ function Navbar() {
                     </div>
                 )}
 
-                <div className="fixed inset-0 z-40 overflow-y-auto flex justify-center">
-                    <Transition
-                            show={isOpen}
-                            enter="transition-opacity duration-300"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition-opacity duration-300"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0"
-                        >
-                            <div className="fixed inset-0">
-                                <div className="absolute inset-0 bg-primary opacity-75"></div>
-                            </div>
-                    </Transition>
+                <div className={`absolute top-0 left-0 flex bg-primary min-h-screen w-full ${isOpen ? 'animate-slide-down z-10' : 'animate-slide-up -z-10'}`}>
+                    <div className='mt-40 ml-10'>
+                        <ul className='space-y-20'>
+                            <li>
+                                <button className={`text-3xl ${animate ? 'underline-b animate-button-up-1' : 'opacity-0'}`}>
+                                    PROJECTS
+                                </button>
+                            </li>
 
-                    <Transition
-                            show={isOpen}
-                            enter="transition-transform duration-300"
-                            enterFrom="-translate-y-full"
-                            enterTo="translate-y-0"
-                            leave="transition-transform duration-300"
-                            leaveFrom="translate-y-0"
-                            leaveTo="-translate-y-full"
-                        >
-                            <div className="relative mt-32 w-full min-h-screen bg-secondary z-40 shadow-md transform">
-                                <div className="p-4">
-                                    <ul>
-                                        <li className="mb-2">Menu Item 1</li>
-                                        <li className="mb-2">Menu Item 2</li>
-                                        <li className="mb-2">Menu Item 3</li>
-                                        {/* Add more menu items as needed */}
-                                    </ul>
-                                </div>
-                            </div>
-                    </Transition>
+                            <li>
+                                <button className={`text-3xl ${animate2 ? 'underline-b animate-button-up-2' : 'opacity-0'}`}>
+                                    SERVICES
+                                </button>
+                            </li>
+
+                            <li>
+                                <button className={`text-3xl ${animate3 ? 'underline-b animate-button-up-3' : 'opacity-0'}`}>
+                                    WHY US?
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-
                 {showButtons && (
-                    <div className='flex flex-row items-center justify-end  w-full mr-8 space-x-8'>
+                    <div className='flex flex-row items-center justify-end w-full mr-8 space-x-8'>
                         <button className='animate-slide-up-1'>
                             PROJECTS
                         </button>
@@ -158,7 +167,7 @@ function Navbar() {
                 )}
             </div>
 
-            <div className='border-container'>
+            <div className='z-50 border-container'>
                 <div className='border-animation'></div>
                 <div id="lower-line"></div>
             </div>
