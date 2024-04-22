@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../css/HomePage.css'
+import LoadingScreen from './LoadingScreens/LoadingScreenServices';
 
 import LogoBlackWhite from '../resources/Logo-BlackWhite.png'
 
@@ -83,7 +84,7 @@ function HomePage() {
                         {texts[textIndex].content}
                     </p>
 
-                    <p className={`mt-2 mb-2 underline 2xl:text-3xl xl:text-xl sm:text-xs min-[320px]:text-[9px] text-third font-alata ${isRotated ? 'animate-slide-up-1' : ''}`}>
+                    <p className={`mt-2 mb-2 underline 2xl:text-3xl xl:text-xl sm:text-xs min-[320px]:text-[9px] text-third font-alata ${isRotated ? 'animate-slide-up' : ''}`}>
                         {texts[textIndex].button}
                     </p>
                 </div>

@@ -1,0 +1,37 @@
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #d18d29; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideIn 0.5s cubic-bezier(0.25, 0.9, 0.25, 1) forwards;
+    z-index: 50;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+    
+  }
+  
+    .loading-screen.hidden {
+        animation: slideOut 0.5s cubic-bezier(0.25, 0.9, 0.25, 1) forwards 0.2s; /* Fast to slow */
+    }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(-100%);
+    }
+  }
+  

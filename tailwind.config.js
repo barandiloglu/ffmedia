@@ -6,7 +6,8 @@ module.exports = {
       colors: {
         primary: '#353232',
         secondary: '#d18d29',
-        third: '#ffffeb'
+        third: '#ffffeb',
+        fourth: '#d3593a'
       },
       fontFamily: {
         'boucherie-sans': ['boucherie-sans', 'sans-serif'],

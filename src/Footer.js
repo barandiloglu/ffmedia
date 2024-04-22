@@ -23,17 +23,17 @@ export const Footer = () => {
         </div>
 
         <div className='flex flex-row w-full mt-8 mb-12 text-third font-alata'>
-            <div className='flex flex-row items-end justify-start w-full ml-16'>
+            <div className='flex flex-row items-end justify-start w-full 2xl:ml-16 sm:ml-2 min-[320px]:ml-2'>
                 <FaRegCopyright />
                 <img className='w-32 ml-2' src={Logo2} alt='Logo-Footer'></img>
             </div>
 
             <div className='flex flex-col items-center justify-center w-full'>
-                <button className='text-black rotate-45' onClick={scrollToTop}><PiNavigationArrowFill size={20}/></button>
+                <button className='text-primary rotate-45' onClick={scrollToTop}><PiNavigationArrowFill size={20}/></button>
                 <button onClick={scrollToTop}>BACK TO TOP</button>
             </div>
 
-            <div className='flex flex-row items-end justify-end w-full mr-16'>
+            <div className='flex flex-row items-end justify-end w-full 2xl:mr-16 sm:mr-2 min-[320px]:mr-2'>
                 <h1>PRIVACY POLICY</h1>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Transition } from '@headlessui/react';
 
 import { BsSlashLg } from "react-icons/bs";
@@ -11,11 +12,17 @@ import LinkedIn from './resources/linkedin.png'
 
 
 function Navbar() {
+    const navigate = useNavigate();
+
     const [showButtons, setShowButtons] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
     const [animate, setAnimate] = useState(false);
     const [animate2, setAnimate2] = useState(false);
     const [animate3, setAnimate3] = useState(false);
+
+    const handleRoute = (buttonId) => {
+        navigate(`/${buttonId}`);
+    };
 
     useEffect(() => {
       const handleResize = () => {
@@ -99,7 +106,7 @@ function Navbar() {
                 )}
 
                 <div className={`flex items-center justify-center w-full ${isOpen ? 'z-50' : 'z-50'}`}>
-                    <button className='w-32 h-32 animate-spin'>
+                    <button className='w-32 h-32 animate-spin' onClick={() => handleRoute('')}>
                         <img src={gif}></img>
                     </button>
                 </div>
@@ -129,19 +136,19 @@ function Navbar() {
                     <div className='mt-40 ml-10'>
                         <ul className='space-y-20'>
                             <li>
-                                <button className={`text-3xl ${animate ? 'underline-b animate-button-up-1' : 'opacity-0'}`}>
+                                <button className={`text-3xl ${animate ? 'underline-b animate-button-up-1' : 'opacity-0'}`} onClick={() => handleRoute('projects')}>
                                     PROJECTS
                                 </button>
                             </li>
 
                             <li>
-                                <button className={`text-3xl ${animate2 ? 'underline-b animate-button-up-2' : 'opacity-0'}`}>
+                                <button className={`text-3xl ${animate2 ? 'underline-b animate-button-up-2' : 'opacity-0'}`} onClick={() => handleRoute('services')}>
                                     SERVICES
                                 </button>
                             </li>
 
                             <li>
-                                <button className={`text-3xl ${animate3 ? 'underline-b animate-button-up-3' : 'opacity-0'}`}>
+                                <button className={`text-3xl ${animate3 ? 'underline-b animate-button-up-3' : 'opacity-0'}`} onClick={() => handleRoute('why-us')}>
                                     WHY US?
                                 </button>
                             </li>
@@ -151,13 +158,13 @@ function Navbar() {
 
                 {showButtons && (
                     <div className='flex flex-row items-center justify-end w-full mr-8 space-x-8'>
-                        <button className='animate-slide-up-1'>
+                        <button className='animate-slide-up-1' onClick={() => handleRoute('projects')}>
                             PROJECTS
                         </button>
-                        <button className='animate-slide-up-2'>
+                        <button className='animate-slide-up-2' onClick={() => handleRoute('services')}>
                             SERVICES
                         </button>
-                        <button className='animate-slide-up-3'>
+                        <button className='animate-slide-up-3' onClick={() => handleRoute('why-us')}>
                             WHY US?
                         </button>
                         <button className='px-2 bg-secondary animate-slide-up-4'>
