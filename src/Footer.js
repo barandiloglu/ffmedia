@@ -10,7 +10,7 @@ export const Footer = () => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: "smooth" // Smooth scrolling animation
+            behavior: "smooth" 
         });
     };
 
@@ -29,7 +29,7 @@ export const Footer = () => {
             </div>
 
             <div className='flex flex-col items-center justify-center w-full'>
-                <button className='text-primary rotate-45' onClick={scrollToTop}><PiNavigationArrowFill size={20}/></button>
+                <button className='rotate-45 text-primary' onClick={scrollToTop}><PiNavigationArrowFill size={20}/></button>
                 <button onClick={scrollToTop}>BACK TO TOP</button>
             </div>
 

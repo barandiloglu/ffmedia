@@ -16,11 +16,8 @@
     height: 2px;
     background-color: #ffffeb;
     width: 100%;
-    margin: 15px 0; 
     animation: line-from-left 0.5s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
 }
-  
-
 
 @keyframes line-from-left {
     from {

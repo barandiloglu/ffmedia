@@ -22,6 +22,10 @@ function Navbar() {
 
     const handleRoute = (buttonId) => {
         navigate(`/${buttonId}`);
+        setIsOpen(false);
+        setAnimate(false); 
+        setAnimate2(false); 
+        setAnimate3(false); 
     };
 
     useEffect(() => {
@@ -136,19 +140,19 @@ function Navbar() {
                     <div className='mt-40 ml-10'>
                         <ul className='space-y-20'>
                             <li>
-                                <button className={`text-3xl ${animate ? 'underline-b animate-button-up-1' : 'opacity-0'}`} onClick={() => handleRoute('projects')}>
+                                <button className={`text-3xl ${animate ? 'underline-b animate-button-up-1' : 'opacity-0'}`} onClick={() => { handleRoute('projects'); toggleActive(); }}>
                                     PROJECTS
                                 </button>
                             </li>
 
                             <li>
-                                <button className={`text-3xl ${animate2 ? 'underline-b animate-button-up-2' : 'opacity-0'}`} onClick={() => handleRoute('services')}>
+                                <button className={`text-3xl ${animate2 ? 'underline-b animate-button-up-2' : 'opacity-0'}`} onClick={() => { handleRoute('services'); toggleActive(); }}>
                                     SERVICES
                                 </button>
                             </li>
 
                             <li>
-                                <button className={`text-3xl ${animate3 ? 'underline-b animate-button-up-3' : 'opacity-0'}`} onClick={() => handleRoute('why-us')}>
+                                <button className={`text-3xl ${animate3 ? 'underline-b animate-button-up-3' : 'opacity-0'}`} onClick={() => { handleRoute('why-us'); toggleActive(); }}>
                                     WHY US?
                                 </button>
                             </li>
