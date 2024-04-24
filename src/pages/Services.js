@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import _ from 'lodash';
 import '../css/Services.css'
 
 import LoadingScreen from './LoadingScreens/LoadingScreenServices';
 import LogoRedPink from '../resources/Logo-RedPink.png'
 
 import Photo from '../resources/photos/DSC09028.jpg';
+import Photo2 from '../resources/photos/DSC09113.jpg';
+import Photo3 from '../resources/photos/DSC09148.jpg';
+import Photo4 from '../resources/photos/DSC09154.jpg';
+import Photo5 from '../resources/photos/IMG_4141.jpg';
+import Photo6 from '../resources/photos/IMG_4182.jpg';
 
 export const Services = () => {
   const [loading, setLoading] = useState(true);
+  const [currentPhoto, setCurrentPhoto] = useState(Photo);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -15,6 +22,30 @@ export const Services = () => {
     }, 910); 
     return () => clearTimeout(timeout);
   }, []);
+
+  const data = [
+    { number: '01', text: 'SOCIAL MEDIA MANAGEMENT' },
+    { number: '02', text: 'CONTENT CREATION' },
+    { number: '03', text: 'SEO (SEARCH ENGINE OPTIMIZATION)' },
+    { number: '04', text: 'WEB DESIGN' },
+    { number: '05', text: 'PHOTOGRAPHY/VIDEOGRAPHY' },
+    { number: '06', text: 'PHOTO/VIDEO EDITING' }
+  ];
+  
+  const [hoveredButton, setHoveredButton] = useState(-1);
+
+  const handleMouseEnter = (buttonIndex) => {
+    setHoveredButton(buttonIndex);
+    debouncedHandlePhotoChange([Photo, Photo2, Photo3, Photo4, Photo5, Photo6][buttonIndex]);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredButton(-1);
+  };
+
+  const debouncedHandlePhotoChange = _.debounce((photo) => {
+    setCurrentPhoto(photo);
+  }, 10)
 
   return (
     <div>
@@ -33,19 +64,11 @@ export const Services = () => {
           <div className='flex flex-row items-center justify-between w-full mt-20 mb-20 space-x-8'>
             {!loading && (
               <>
-                <div className='relative flex flex-row w-[40%] justify-between'>
-                    <div className='2xl:w-[50%] 2xl:ml-[-29.5%] xl:w-[50%] xl:ml-[-29.4%] lg:w-[50%] lg:ml-[-29.2%] md:w-[65%] md:ml-[-38.1%] sm:w-[60%] sm:ml-[-35.3%] min-[320px]:w-[100%] min-[320px]:ml-[-42.1%] flex'>
+                <div className='items-center justify-end flex flex-row w-[50%]'>
+                    <div className='flex w-[50%] image-container slide-in-left'>
                         <img
-                            className={`object-contain`}
-                            src={LogoRedPink}
-                            alt='Logo-RedPink'
-                        />
-                    </div>
-
-                    <div className='2xl:w-[40%] xl:w-[45%] lg:w-[50%] md:w-[60%] sm:w-[70%] min-[320px]:w-[100%] flex image-container slide-in-left'>
-                        <img
-                            className={`object-contain rounded-2xl`}
-                            src={Photo}
+                            className={`object-cover rounded-2xl`}
+                            src={currentPhoto}
                             alt='Photo'
                         />
                     </div>
@@ -53,74 +76,139 @@ export const Services = () => {
               </>
             )}
 
-            <div className='flex flex-row 2xl:w-[50%] xl:w-[50%] lg:w-[50%] md:w-[50%] sm:w-[50%] min-[320px]:w-[80%] font-lemon-milk items-center text-third text-4xl'>
+            <div className='flex flex-row items-center justify-center text-4xl w-[50%] font-lemon-milk text-third '>
               {!loading && (
                 <>
-                  <div className='flex flex-col items-start 2xl:w-[7%] xl:w-[7%] lg:w-[7%] md:w-[7%] sm:w-[10%]'>
-                    <ul className='2xl:space-y-9 2xl:text-3xl xl:space-y-[38px] xl:text-2xl lg:space-y-[38px] lg:text-xl md:space-y-[34px] md:text-lg sm:space-y-[26px] sm:text-base min-[320px]:space-y-[26px] min-[320px]:text-xs text-fourth mr-2'>
-                      <li className='animate-slide-up-1'>01</li>
-                      <li className='animate-slide-up-1'>02</li>
-                      <li className='animate-slide-up-1'>03</li>
-                      <li className='animate-slide-up-1'>04</li>
-                      <li className='animate-slide-up-1'>05</li>
-                      <li className='animate-slide-up-1'>06</li>
-                    </ul>
+                  <div className="overflow-x-auto ">
+                    <table className="min-w-full">
+                      <tbody className="bg-transparent divide-y divide-white">
+                        <tr>
+                          <td className="px-6 py-4 text-sm font-medium text-third whitespace-nowrap">
+                            <div className={`flex items-center`}>
+                              <div className="flex flex-row items-center justify-start">
+                                <div className="mr-8 text-sm font-medium text-fourth"></div>
+                                <div className="text-xl text-third"></div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <button 
+                            type="button" 
+                            className={'w-full px-6 py-4 text-sm font-medium transition-colors duration-300 ease-in-out text-third whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-500 hover:bg-fifth'}
+                            onMouseEnter={() => {
+                              handleMouseEnter(0);
+                            }}                            
+                          onMouseLeave={handleMouseLeave}
+                          >
+                            <div className={`flex items-center ${hoveredButton === 0 ? 'animate-moveRight' : ''}`}>
+                              <div class="flex flex-row items-center justify-start">
+                                <div class="mr-8 text-sm font-medium text-fourth">{data[0].number}</div>
+                                <div class="text-xl text-third">{data[0].text}</div>
+                              </div>
+                            </div>
+                          </button>
+                        </tr>
+                        <tr>
+                          <button 
+                            type="button" 
+                            className="w-full px-6 py-4 text-sm font-medium transition-colors duration-300 ease-in-out text-third whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-500 hover:bg-fifth"
+                            onMouseEnter={() => {
+                              handleMouseEnter(1);
+                            }}                            
+                          onMouseLeave={handleMouseLeave}
+                          >
+                            <div className={`flex items-center ${hoveredButton === 1 ? 'animate-moveRight' : ''}`}>
+                              <div className="flex flex-row items-center justify-start">
+                                <div className="mr-8 text-sm font-medium text-fourth">{data[1].number}</div>
+                                <div className="text-xl text-third">{data[1].text}</div>
+                              </div>
+                            </div>
+                          </button>
+                        </tr>
+                        <tr>
+                          <button 
+                            type="button" 
+                            className="w-full px-6 py-4 text-sm font-medium transition-colors duration-300 ease-in-out text-third whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-500 hover:bg-fifth"
+                            onMouseEnter={() => {
+                              handleMouseEnter(2);
+                            }}
+                          onMouseLeave={handleMouseLeave}
+                          >
+                            <div className={`flex items-center ${hoveredButton === 2 ? 'animate-moveRight' : ''}`}>
+                              <div className="flex flex-row items-center justify-start">
+                                <div className="mr-8 text-sm font-medium text-fourth">{data[2].number}</div>
+                                <div className="text-xl text-third">{data[2].text}</div>
+                              </div>
+                            </div>
+                          </button>
+                        </tr>
+                        <tr>
+                          <button 
+                            type="button" 
+                            className="w-full px-6 py-4 text-sm font-medium transition-colors duration-300 ease-in-out text-third whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-500 hover:bg-fifth"
+                            onMouseEnter={() => {
+                              handleMouseEnter(3);
+                            }}
+                            onMouseLeave={handleMouseLeave}
+                          >
+                            <div className={`flex items-center ${hoveredButton === 3 ? 'animate-moveRight' : ''}`}>
+                              <div className="flex flex-row items-center justify-start">
+                                <div className="mr-8 text-sm font-medium text-fourth">{data[3].number}</div>
+                                <div className="text-xl text-third">{data[3].text}</div>
+                              </div>
+                            </div>
+                          </button>
+                        </tr>
+                        <tr>
+                          <button 
+                            type="button" 
+                            className="w-full px-6 py-4 text-sm font-medium transition-colors duration-300 ease-in-out text-third whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-500 hover:bg-fifth"
+                            onMouseEnter={() => {
+                              handleMouseEnter(4);
+                            }}
+                            onMouseLeave={handleMouseLeave}
+                          >
+                            <div className={`flex items-center ${hoveredButton === 4 ? 'animate-moveRight' : ''}`}>
+                              <div className="flex flex-row items-center justify-start">
+                                <div className="mr-8 text-sm font-medium text-fourth">{data[4].number}</div>
+                                <div className="text-xl text-third">{data[4].text}</div>
+                              </div>
+                            </div>
+                          </button>
+                        </tr>
+                        <tr>
+                          <button 
+                            type="button" 
+                            className="w-full px-6 py-4 text-sm font-medium transition-colors duration-300 ease-in-out text-third whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-gray-500 hover:bg-black"
+                            onMouseEnter={() => {
+                              handleMouseEnter(5);
+                            }}
+                            onMouseLeave={handleMouseLeave}
+                          >
+                            <div className={`flex items-center ${hoveredButton === 5 ? 'animate-moveRight' : ''}`}>
+                              <div className="flex flex-row items-center justify-start">
+                                <div className="mr-8 text-sm font-medium text-fourth">{data[5].number}</div>
+                                <div className="text-xl text-third">{data[5].text}</div>
+                              </div>
+                            </div>
+                          </button>
+                        </tr>
+                        <tr>
+                          <td className="px-6 py-4 text-sm font-medium text-third whitespace-nowrap">
+                            <div className="flex items-center">
+                              <div className="flex flex-row items-center justify-start">
+                                <div className="mr-8 text-sm font-medium text-fourth"></div>
+                                <div className="text-xl text-third"></div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </>
               )}
-
-              <div className='flex flex-col text-third font-lemon-milk 2xl:text-[34px] xl:text-3xl lg:text-2xl md:text-xl sm:text-base min-[320px]:text-[10px] w-[80%]'>
-                <div className='flex flex-col items-start'>
-                  {!loading && (
-                    <>
-                      <div className="2xl:my-4 xl:my-4 lg:my-4 md:my-4 sm:my-3 min-[320px]:my-0 line"></div>
-                        <div className='flex w-full'>
-                          <button className='text-nowrap overflow-hidden overflow-ellipsis'>
-                            SOCIAL MEDIA MANAGEMENT
-                          </button>
-                        </div>
-
-                      <div className="2xl:my-4 xl:my-4 lg:my-4 md:my-4 sm:my-3 min-[320px]:my-0 line"></div>
-                        <div className='flex w-full'>
-                          <button className='text-nowrap overflow-hidden overflow-ellipsis'>
-                            CONTENT CREATION
-                          </button>
-                        </div>
-
-                      <div className="2xl:my-4 xl:my-4 lg:my-4 md:my-4 sm:my-3 min-[320px]:my-0 line"></div>
-                        <div className='flex w-full'>
-                          <button className='text-nowrap overflow-hidden overflow-ellipsis'>
-                            SEO (SEARCH ENGINE OPTIMIZATION)
-                          </button>
-                        </div>
-
-                      <div className="2xl:my-4 xl:my-4 lg:my-4 md:my-4 sm:my-3 min-[320px]:my-0 line"></div>
-                        <div className='flex w-full'>
-                          <button className='text-nowrap overflow-hidden overflow-ellipsis'>
-                            WEB DESIGN
-                          </button>
-                        </div>
-
-                      <div className="2xl:my-4 xl:my-4 lg:my-4 md:my-4 sm:my-3 min-[320px]:my-0 line"></div>
-                        <div className='flex w-full'>
-                          <button className='text-nowrap overflow-hidden overflow-ellipsis'>
-                            PHOTOGRAPHY/VIDEOGRAPHY
-                          </button>
-                        </div>
-
-                      <div className="2xl:my-4 xl:my-4 lg:my-4 md:my-4 sm:my-3 min-[320px]:my-0 line"></div>
-                        <div className='flex w-full'>
-                          <button className='text-nowrap overflow-hidden overflow-ellipsis'>
-                            PHOTO/VIDEO EDITING
-                          </button>
-                        </div>
-
-                      <div className="2xl:my-4 xl:my-4 lg:my-4 md:my-4 sm:my-3 min-[320px]:my-0 line"></div>
-                    </>
-                  )}
-                </div>
-              </div>
-
             </div>
 
 

@@ -7,7 +7,8 @@ module.exports = {
         primary: '#353232',
         secondary: '#d18d29',
         third: '#ffffeb',
-        fourth: '#d3593a'
+        fourth: '#d3593a',
+        fifth: '#222020'
       },
       fontFamily: {
         'boucherie-sans': ['boucherie-sans', 'sans-serif'],

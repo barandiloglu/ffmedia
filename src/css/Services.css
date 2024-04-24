@@ -59,5 +59,15 @@
   }
 }
 
+@keyframes moveRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(10px); /* Adjust the value as needed */
+  }
+}
 
-
+.animate-moveRight {
+  animation: moveRight 0.3s ease forwards;
+}
