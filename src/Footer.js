@@ -17,12 +17,12 @@ export const Footer = () => {
   return (
     <div className='flex flex-col items-center w-full bg-secondary'>
         <div className='flex items-center justify-center w-full text-third font-alata'>
-            <button className='w-32 h-32 mt-12'>
+            <button className='mt-12 w-28 h-28'>
                 <img src={Logo}></img>
             </button>
         </div>
 
-        <div className='flex flex-row w-full mt-8 mb-12 text-third font-alata'>
+        <div className='flex flex-row w-full mt-8 mb-8 text-third font-alata'>
             <div className='flex flex-row items-end justify-start w-full 2xl:ml-16 sm:ml-2 min-[320px]:ml-2'>
                 <FaRegCopyright />
                 <img className='w-32 ml-2' src={Logo2} alt='Logo-Footer'></img>

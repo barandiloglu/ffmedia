@@ -14,6 +14,9 @@ module.exports = {
         'boucherie-sans': ['boucherie-sans', 'sans-serif'],
         'alata': ['Alata', 'sans-serif'],
         'lemon-milk': ['lemon-milk', 'sans-serif'],
+      },
+      backgroundImage: {
+        'services-wave': "url('../src/resources/bg.webp')",
       }
     },
   },

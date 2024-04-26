@@ -91,18 +91,7 @@ function HomePage() {
             </div>
         </div>
 
-        <div className='flex w-full mt-20 border border-red-500'>
-            <div className='flex flex-row justify-center w-full mx-20 border border-yellow-300'>
-                <div className='flex w-[35%] border justify-center border-green-500'>
-                    <img src={Photo} className='object-cover'></img>
-                </div>
 
-                <div className='flex flex-col justify-between w-[55%] h-96 ml-10 border border-blue-400'>
-                    <img src={Photo2} className='object-cover mb-2 h-1/2'></img>
-                    <img src={Photo3} className='object-cover h-1/2'></img>
-                </div>
-            </div>
-        </div>
     </div>
   )
 }
